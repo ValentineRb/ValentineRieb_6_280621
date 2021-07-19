@@ -1,10 +1,13 @@
 // Import packages:
-// Express package.
 const express = require('express');
-// Mongoose package.
 const mongoose = require('mongoose');
-// Dotenv package.
 require('dotenv').config({path : ".env"});
+const path = require('path');
+// const bodyParser = require('body-parser');
+
+// Import the routers.
+const sauceRoutes = require('./routes/sauce')
+const userRoutes = require('./routes/user');
 
 // Declare the constant which is the application.
 const app = express();
@@ -15,6 +18,7 @@ mongoose.connect('mongodb+srv://' + process.env.DB_USER + ':' + process.env.DB_P
   useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
+  mongoose.set('useCreateIndex', true);
 
 // Add the headers to the object response and avoid any CORS.
 app.use((req, res, next) => {
@@ -26,6 +30,13 @@ app.use((req, res, next) => {
 
 // Change the request body into object JS usable.
 app.use(express.json());
+// app.use(bodyParser.json());
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+// Use the routers for all the requests to /api/sauce and /api/auth.
+app.use('/api/sauces', sauceRoutes);
+app.use('/api/auth', userRoutes);
 
 // Export the application to use it anywhere in the project.
 module.exports = app;

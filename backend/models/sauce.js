@@ -1,3 +1,4 @@
+// Import package.
 const mongoose = require('mongoose');
 
 // Create database schema.
