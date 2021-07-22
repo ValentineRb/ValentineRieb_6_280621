@@ -1,19 +1,19 @@
-// Import packages:
+// Import packages.
 const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv').config({path : ".env"});
+const helmet = require('helmet');
 const path = require('path');
-// const bodyParser = require('body-parser');
+require('dotenv').config({path : ".env"});
 
-// Import the routers.
-const sauceRoutes = require('./routes/sauce')
+// Import routers.
+const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
 // Declare the constant which is the application.
 const app = express();
 
 // Connect the API to the database MongoDB.
-mongoose.connect('mongodb+srv://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST,
+mongoose.connect('mongodb+srv://' + process.env.DB_ADMIN + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST,
 { useNewUrlParser: true,
   useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -30,8 +30,9 @@ app.use((req, res, next) => {
 
 // Change the request body into object JS usable.
 app.use(express.json());
-// app.use(bodyParser.json());
+app.use(helmet());
 
+// Use the route for images.
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Use the routers for all the requests to /api/sauce and /api/auth.

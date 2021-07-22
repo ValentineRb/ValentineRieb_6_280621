@@ -4,11 +4,11 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 // Create database schema.
 const userSchema = mongoose.Schema({
-  email: {type: String, required: true, unique: true, match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, "Adresse email invalide"]},
+  email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-})
+});
 
-// Apply the validator to avoid 
+// Apply the validator.
 userSchema.plugin(uniqueValidator);
 
 // Export the model.

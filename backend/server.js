@@ -1,5 +1,3 @@
-/// CREATE THE SERVER.
-
 // Import the native http package of Node.
 const http = require('http');
 // Import the application from app.js.
@@ -16,8 +14,9 @@ const normalizePort = (val) => {
   }
   return false;
 };
-const port = normalizePort(process.env.PORT || '3000');
+
 // Indicate which port the application must use.
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 // Handle the error depending of the type.
@@ -41,7 +40,6 @@ const errorHandler = (error) => {
 
 // Access to createServer() method of the http object with the application as argument.
 const server = http.createServer(app);
-
 // Activate the listening mode and wait to receive the requests.
 server.on('error', errorHandler);
 server.on('listening', () => {
