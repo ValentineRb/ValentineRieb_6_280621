@@ -11,9 +11,9 @@ exports.signup = (req, res, next) => {
   // 2. Promise sent, hash received.
     .then(hash => {
       const emailMask2Options = {
-        maskWith: "*", 
-        unmaskedStartCharactersBeforeAt: 0,
-        unmaskedEndCharactersAfterAt: 0,
+        maskWith: "*",
+        unmaskedStartCharactersBeforeAt: 2,
+        unmaskedEndCharactersAfterAt: 3,
         maskAtTheRate: false
     }
     const maskedEmail = MaskData.maskEmail2(req.body.email,emailMask2Options);
@@ -29,7 +29,7 @@ exports.signup = (req, res, next) => {
       user.save()
       // 5. Send a reply: success or error.
         .then(() => res.status(201).json({ message: 'Nouvel utilisateur créé.' }))
-        .catch(error => res.status(400).json({ message: 'Nouvel utilisateur créé!!!!!' }));
+        .catch(error => res.status(400).json({ message: 'error' }));
     })
     .catch(error => res.status(500).json({ error }));
   };
@@ -37,9 +37,9 @@ exports.signup = (req, res, next) => {
 // Login for existing user.
 exports.login = (req, res, next) => {
   const emailMask2Options = {
-    maskWith: "*", 
-    unmaskedStartCharactersBeforeAt: 0,
-    unmaskedEndCharactersAfterAt: 0,
+    maskWith: "*",
+    unmaskedStartCharactersBeforeAt: 2,
+    unmaskedEndCharactersAfterAt: 3,
     maskAtTheRate: false
 }
 const maskedEmail = MaskData.maskEmail2(req.body.email,emailMask2Options);
