@@ -1,7 +1,7 @@
-// Import package multer to manage the files send with http requests.
+// Import the package multer to manage the files send with the http requests.
 const multer = require('multer');
 
-// Create dictionnary which is an objet.
+// Create a an object dictionnary.
 const MIME_TYPES = {
   'image/jpg': 'jpg',
   'image/jpeg': 'jpg',

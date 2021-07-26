@@ -1,8 +1,8 @@
-// Import Mongoose and add the plug in.
+// Import the package mongoose and add the plug in.
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
-// Create database schema.
+// Create the database schema.
 const userSchema = mongoose.Schema({
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},

@@ -1,4 +1,4 @@
-// Import packages and files.
+// Import the necessary files.
 const Sauce = require('../models/Sauce');
 
 // Get all sauces (Get/api/sauces).

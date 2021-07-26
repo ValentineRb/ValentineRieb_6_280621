@@ -1,4 +1,4 @@
-// Import packages and files.
+// Import the necessary packages and files.
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
@@ -21,7 +21,6 @@ exports.signup = (req, res, next) => {
       const user = new User({
         // Email received form the request body.
         email: maskedEmail,
-        // email: req.body.email,
         // Password saved with the hash.
         password: hash
       });
@@ -46,7 +45,7 @@ const maskedEmail = MaskData.maskEmail2(req.body.email,emailMask2Options);
   // 1. Find the user in the database.
   User.findOne({ email: maskedEmail })
     .then(user => {
-      // If user does not exist, send an error.
+      // If user does not exist, sent an error.
       if (!user) {
         return res.status(401).json({ error: 'Utilisateur non trouvé.' });
       }

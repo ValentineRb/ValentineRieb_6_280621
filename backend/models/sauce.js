@@ -1,7 +1,7 @@
-// Import package.
+// Import the package mongoose.
 const mongoose = require('mongoose');
 
-// Create database schema.
+// Create the database schema.
 const sauceSchema = mongoose.Schema({
   userId: { type: String, required: true },
   name: { type: String, required: true },

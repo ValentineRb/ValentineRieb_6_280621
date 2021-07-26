@@ -3,9 +3,9 @@ const express = require('express');
 // Create the router.
 const router = express.Router();
 
-// Import the authentification middleware.
+// Import the middleware authentification.
 const auth = require('../middleware/auth');
-// Import the multer middleware.
+// Import the middleware multer.
 const multer = require('../middleware/multer-config');
 
 // Import the controller.

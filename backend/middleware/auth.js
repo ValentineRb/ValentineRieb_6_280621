@@ -1,4 +1,4 @@
-// Import package.
+// Import the package jsonwebtoken.
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     // Get the user Id which is in the JS object.
     const userId = decodedToken.userId;
-    // Check if the request has an user ID and compare with the user extract ID from the token.
+    // Check if the request has an user ID and compare with the user ID extracts from the token.
     if (req.body.userId && req.body.userId !== userId) {
       throw 'User ID non valable.';
     } else {

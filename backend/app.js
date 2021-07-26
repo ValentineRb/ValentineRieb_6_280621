@@ -1,11 +1,11 @@
-// Import packages.
+// Import the packages.
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const path = require('path');
 require('dotenv').config({path : ".env"});
 
-// Import routers.
+// Import the routers.
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
@@ -30,11 +30,10 @@ app.use((req, res, next) => {
 
 // Change the request body into object JS usable.
 app.use(express.json());
+// Use the packages.
 app.use(helmet());
-
 // Use the route for images.
 app.use('/images', express.static(path.join(__dirname, 'images')));
-
 // Use the routers for all the requests to /api/sauce and /api/auth.
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);

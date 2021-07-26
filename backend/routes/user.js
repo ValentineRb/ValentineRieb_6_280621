@@ -1,4 +1,4 @@
-// Import packages and files.
+// Import the necessary packages and files.
 const express = require('express');
 const router = express.Router();
 const userCtrl = require('../controllers/user')
